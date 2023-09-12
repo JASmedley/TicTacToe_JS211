@@ -29,9 +29,9 @@ const rl = readline.createInterface({
 
 
 let board = [
-  ["","",""],
-  ["","",""],
-  ["","",""]
+  [' ', ' ', ' '],
+  [' ', ' ', ' '],
+  [' ', ' ', ' ']
 ];
 
 let playerTurn = 'X'
@@ -79,14 +79,15 @@ const diagonalWin = () => {
 const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
     console.log(`Player ${playerTurn === "X" ? "O" : "X"} won!`)
+    return true
 
   } else {
-    ticTacToe()
+    return false
   }
 }
 
 const ticTacToe = (row, column) => {
-  if (row >= 0 && row < 3 && column >= 0 && column < 3 && board[row][column] === "") {
+  if (row >= 0 && row < 3 && column >= 0 && column < 3 && board[row][column] === " ") {
     board[row][column] = playerTurn;
     playerTurn = playerTurn === "X" ? "O" : "X";
 
